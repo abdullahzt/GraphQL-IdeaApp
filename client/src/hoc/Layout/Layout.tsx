@@ -8,7 +8,7 @@ const Layout:React.FC = props => {
 
     const [showForm, setShowForm] = useState(false)
 
-    const toggleShowForm = (_: React.FormEvent) => {
+    const toggleShowForm = () => {
         setShowForm(prevValue => !prevValue)
     }
 
@@ -16,7 +16,7 @@ const Layout:React.FC = props => {
         <Fragment>
             <Toolbar onClick={toggleShowForm} />
             <Modal show={showForm} modalClosed={toggleShowForm}>
-                <NewIdeaForm />
+                <NewIdeaForm toggleFormShow={toggleShowForm} />
             </Modal>
             {props.children}
         </Fragment>
