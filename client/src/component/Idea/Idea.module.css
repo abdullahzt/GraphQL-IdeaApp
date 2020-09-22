@@ -1,0 +1,18 @@
+.Idea {
+    border: 1px solid rgba(204, 204, 204, 0.7);
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: rgb(250, 250, 250);
+}
+
+.Light {
+    font-weight: 300;
+}
+
+@media(max-width: 950px) {
+    .Idea {
+        width: 70%;
+    }
+}

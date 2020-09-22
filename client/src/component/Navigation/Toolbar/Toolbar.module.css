@@ -28,6 +28,11 @@
     font-size: 18px;
     font-weight: 400;
     cursor: pointer;
+    outline: none;
+}
+
+.Toolbar button:active {
+    opacity: 0.7;
 }
 
 @media(max-width: 500px) {
