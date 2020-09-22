@@ -1,0 +1,35 @@
+.Form {
+    font-family: 'Kumbh Sans';
+}
+
+.Form input {
+    display: block;
+    margin: 15px 0;
+    outline: none;
+    width: 70%;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: 'Kumbh Sans';
+}
+
+.Form textarea {
+    display: block;
+    margin: 15px 0;
+    outline: none;
+    height: 50px;
+    width: 70%;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: 'Kumbh Sans';
+}
+
+.Form button {
+    border: none;
+    padding: 10px 15px;
+    font-family: 'Kumbh Sans';
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+}
