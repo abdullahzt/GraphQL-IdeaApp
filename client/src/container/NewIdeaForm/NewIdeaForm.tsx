@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
 import classes from './NewIdeaForm.module.css';
 
-import { useMutation } from '@apollo/client';
+import { useMutation, gql } from '@apollo/client';
 import { ADD_IDEA } from '../../mutations/NewIdea/NewIdea';
 
 interface NewIdeaFormProps {
@@ -17,13 +17,35 @@ const NewIdeaForm: React.FC<NewIdeaFormProps> = props => {
         category: ""
     })
 
-    const [createIdea, newIdea] = useMutation(ADD_IDEA)
+    const [createIdea] = useMutation(ADD_IDEA, {
+        update(cache, { data: { createIdea } }) {
+            cache.modify({
+                fields: {
+                    ideas(existingIdeas = []) {
+                        const newIdeaRef = cache.writeFragment({
+                            data: createIdea,
+                            fragment: gql`
+                                fragment NewIdea on Idea {
+                                    id
+                                    name
+                                    description
+                                    category
+                                    author
+                                }
+                            `
+                        });
+                        return [...existingIdeas, newIdeaRef]
+                    }
+                }
+            })
+        }
+    })
 
     const formSubmitHandler = (event: React.FormEvent) => {
         event.preventDefault()
         createIdea({
             variables: { newIdea: { ...form } }
-        })
+        }).catch(err => console.log(err))
         props.toggleFormShow()
     }
 
