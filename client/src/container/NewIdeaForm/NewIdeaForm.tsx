@@ -44,7 +44,18 @@ const NewIdeaForm: React.FC<NewIdeaFormProps> = props => {
     const formSubmitHandler = (event: React.FormEvent) => {
         event.preventDefault()
         createIdea({
-            variables: { newIdea: { ...form } }
+            variables: { newIdea: { ...form } },
+            optimisticResponse: {
+                __typename: "Mutation",
+                createIdea: {
+                    __typename: "Idea",
+                    id: '',
+                    name: form.name,
+                    description: form.description,
+                    category: form.category,
+                    author: "Loading.."
+                }
+            }
         }).catch(err => console.log(err))
         props.toggleFormShow()
     }

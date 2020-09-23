@@ -27,7 +27,7 @@ const Ideas: React.FC = props => {
 
     return (
         <div>
-            {data?.ideas.map(idea => {
+            {data?.ideas.slice().reverse().map(idea => {
 
                 let key = idea.id as string
 
